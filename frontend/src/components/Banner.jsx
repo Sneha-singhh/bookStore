@@ -28,7 +28,7 @@ export default function Banner() {
              </svg>
               <input type="text" className="grow" placeholder="Email" />
             </label>
-            <button className="btn btn-active btn-secondary">Click</button>
+            <button className="btn btn-active btn-secondary">Get Started</button>
             
         </div>
        </div>

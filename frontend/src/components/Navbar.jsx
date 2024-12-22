@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Login from './Login'
+import { useContext } from 'react'
+import { useAuth } from '../context/AuthProvider';
+import Logout from './Logout';
 
 function Navbar() {
+ const[authUser,setAuthUser] = useAuth()
+  console.log(authUser);
   const [theme,setTheme] = useState(localStorage.getItem("theme")? localStorage.getItem("theme") : "dark" )
   const element = document.documentElement
   useEffect(()=>{
@@ -28,7 +33,7 @@ function Navbar() {
   return (
     <>
       <div>
-      <div className={`navbar bg-base-300 max-w-screen-2xl container mx-auto md:px-20 px-4 fixed top-0 left-0 right-0 z-10`}>
+      <div className={`navbar bg-base-300 text-white max-w-screen-2xl container mx-auto md:px-20 px-4 fixed top-0 left-0 right-0 z-10`}>
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -102,6 +107,8 @@ function Navbar() {
   </svg>
  </label>
   </div>
+  {
+    authUser ? <Logout/> :
     <div>
     <a 
       className="btn bg-black  "
@@ -110,6 +117,7 @@ function Navbar() {
     </a>
     <Login/>
     </div>
+  }
   </div>
  </div>
 </div>
